@@ -51,6 +51,7 @@ namespace cis237_assignment1
                             outputString += beverage.ToString() + Environment.NewLine;
                         }
                     }
+
                     choice++;
                 }
 
