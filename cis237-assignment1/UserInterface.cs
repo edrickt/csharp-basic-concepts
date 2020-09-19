@@ -36,15 +36,17 @@ namespace cis237_assignment1
             {
                 Console.WriteLine("OPTIONS:");
                 Console.WriteLine("1. Load CSV file");
-                Console.WriteLine("2. Exit" + Environment.NewLine);
+                Console.WriteLine("9. Exit" + Environment.NewLine);
 
                 counter++;
             }
             else
             {
                 Console.WriteLine("OPTIONS:");
-                Console.WriteLine("1. Print List");
-                Console.WriteLine("2. Exit" + Environment.NewLine);
+                Console.WriteLine("1. Print list");
+                Console.WriteLine("2. Search beverage by ID");
+                Console.WriteLine("3. Add new beverage");
+                Console.WriteLine("9. Exit" + Environment.NewLine);
             }
         }
 

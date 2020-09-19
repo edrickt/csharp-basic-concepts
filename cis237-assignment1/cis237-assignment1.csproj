@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Beverage.cs" />
+    <Compile Include="BeverageCollection.cs" />
     <Compile Include="CSVProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

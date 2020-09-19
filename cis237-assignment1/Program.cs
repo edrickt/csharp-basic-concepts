@@ -16,13 +16,13 @@ namespace cis237_assignment1
     {
         static void Main(string[] args)
         {
-            Beverage listBeverage = new Beverage();
+            //Beverage listBeverage = new Beverage();
 
-            listBeverage.BeverageID = "123123";
-            listBeverage.BeverageName = "Blake's Hard Cider Triple Jam";
-            listBeverage.BeveragePack = "6/12oz";
-            listBeverage.BeveragePrice = 10.00m;
-            listBeverage.BeverageActive = "True";
+            //listBeverage.BeverageID = "123123";
+            //listBeverage.BeverageName = "Blake's Hard Cider Triple Jam";
+            //listBeverage.BeveragePack = "6/12oz";
+            //listBeverage.BeveragePrice = 10.00m;
+            //listBeverage.BeverageActive = "True";
 
             Beverage[] beverages = new Beverage[4100];
 
@@ -30,35 +30,39 @@ namespace cis237_assignment1
 
             CSVProcessor csvProcessor = new CSVProcessor();
 
-            //csvProcessor.ImportCsv(pathToCsv, beverages);
-
             UserInterface ui = new UserInterface();
 
             int choice = ui.GetUserInterface();
 
-            while (choice != 2)
-            {
-                if (choice == 1)
-                {
-                    string outputString = "";
+            int choiceCounter = 1;
 
+            while (choice != 9)
+            {
+                if (choice == 1 && choiceCounter == 1)
+                {
                     csvProcessor.ImportCsv(pathToCsv, beverages);
 
-                    foreach (Beverage beverage in beverages)
-                    {
-                        if (beverage != null)
-                        {
-                            outputString += beverage.ToString() + Environment.NewLine;
-                        }
-                    }
-
-                    choice++;
+                    choiceCounter++;
                 }
+                else
+                {
+                    if (choice == 1)
+                    {
+                        string outputString = "";
 
+                        foreach (Beverage beverage in beverages)
+                        {
+                            if (beverage != null)
+                            {
+                                outputString += beverage.ToString() + Environment.NewLine;
+                            }
+                        }
+
+                        ui.PrintList(outputString);
+                    }
+                }
                 choice = ui.GetUserInterface();
             }
-
-            choice = ui.GetUserInterface();
         }
     }
 }
