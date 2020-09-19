@@ -44,7 +44,7 @@ namespace cis237_assignment1
             {
                 Console.WriteLine("OPTIONS:");
                 Console.WriteLine("1. Print List");
-                Console.WriteLine("2. Exit");
+                Console.WriteLine("2. Exit" + Environment.NewLine);
             }
         }
 

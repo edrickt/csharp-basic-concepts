@@ -30,7 +30,7 @@ namespace cis237_assignment1
 
             CSVProcessor csvProcessor = new CSVProcessor();
 
-            csvProcessor.ImportCsv(pathToCsv, beverages);
+            //csvProcessor.ImportCsv(pathToCsv, beverages);
 
             UserInterface ui = new UserInterface();
 
@@ -40,9 +40,19 @@ namespace cis237_assignment1
             {
                 if (choice == 1)
                 {
-                    Console.WriteLine(Environment.NewLine + listBeverage.ToString() + Environment.NewLine);
+                    string outputString = "";
+
+                    csvProcessor.ImportCsv(pathToCsv, beverages);
 
                     choice++;
+
+                    foreach (Beverage beverage in beverages)
+                    {
+                        if (beverage != null)
+                        {
+                            outputString += beverage.ToString() + Environment.NewLine;
+                        }
+                    }
                 }
 
                 choice = ui.GetUserInterface();

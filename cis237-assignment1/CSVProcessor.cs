@@ -36,17 +36,26 @@ namespace cis237_assignment1
 
                 return false;
             }
-        }
 
+            finally
+            {
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
+            }
+        }
         private void ProcessLine(string line, Beverage[] beverages, int index)
         {
             string[] parts = line.Split(',');
 
-            string bevarageID = parts[0];
-            string bevarageName = parts[1];
-            string bevaragePack = parts[2];
-            string bevaragePrice = parts[3];
-            string bevarageActive = parts[4];
+            int beverageID = int.Parse(parts[0]);
+            string beverageName = parts[1];
+            string beveragePack = parts[2];
+            decimal beveragePrice = decimal.Parse(parts[3]);
+            string beverageActive = parts[4];
+
+            beverages[index] = new Beverage(beverageID, beverageName, beveragePack, beveragePrice, beverageActive);
         }
     }
 }
