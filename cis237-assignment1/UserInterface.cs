@@ -30,7 +30,7 @@ namespace cis237_assignment1
 
         private void PrintMenu()
         {
-            Console.WriteLine("Type number then press ENTER to enter" + Environment.NewLine);
+            Console.WriteLine(Environment.NewLine + "Type number then press ENTER to enter" + Environment.NewLine);
 
             if (counter == 0)
             {

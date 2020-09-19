@@ -8,13 +8,13 @@ namespace cis237_assignment1
 {
     class Beverage
     {
-        private int _beverageId;
+        private string _beverageId;
         private string _beverageName;
         private string _beveragePack;
         private decimal _beveragePrice;
         private string _beverageActive;
 
-        public int BeverageID
+        public string BeverageID
         {
             get { return _beverageId; }
             set { _beverageId = value; }
@@ -46,7 +46,7 @@ namespace cis237_assignment1
                    " " + _beveragePrice + " " + _beverageActive;
         }
 
-        public Beverage(int BeverageID, string BeverageName, string BeveragePack,
+        public Beverage(string BeverageID, string BeverageName, string BeveragePack,
                         decimal BeveragePrice, string BeverageActive)
         {
             this._beverageId = BeverageID;
@@ -55,7 +55,6 @@ namespace cis237_assignment1
             this._beveragePrice = BeveragePrice;
             this._beverageActive = BeverageActive;
         }
-
         public Beverage()
         {
         }

@@ -18,7 +18,7 @@ namespace cis237_assignment1
         {
             Beverage listBeverage = new Beverage();
 
-            listBeverage.BeverageID = 12345;
+            listBeverage.BeverageID = "123123";
             listBeverage.BeverageName = "Blake's Hard Cider Triple Jam";
             listBeverage.BeveragePack = "6/12oz";
             listBeverage.BeveragePrice = 10.00m;
@@ -44,8 +44,6 @@ namespace cis237_assignment1
 
                     csvProcessor.ImportCsv(pathToCsv, beverages);
 
-                    choice++;
-
                     foreach (Beverage beverage in beverages)
                     {
                         if (beverage != null)
@@ -53,10 +51,13 @@ namespace cis237_assignment1
                             outputString += beverage.ToString() + Environment.NewLine;
                         }
                     }
+                    choice++;
                 }
 
                 choice = ui.GetUserInterface();
             }
+
+            choice = ui.GetUserInterface();
         }
     }
 }

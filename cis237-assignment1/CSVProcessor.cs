@@ -49,7 +49,7 @@ namespace cis237_assignment1
         {
             string[] parts = line.Split(',');
 
-            int beverageID = int.Parse(parts[0]);
+            string beverageID = parts[0];
             string beverageName = parts[1];
             string beveragePack = parts[2];
             decimal beveragePrice = decimal.Parse(parts[3]);
