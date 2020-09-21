@@ -16,31 +16,21 @@ namespace cis237_assignment1
     {
         static void Main(string[] args)
         {
-            //Beverage listBeverage = new Beverage();
-
-            //listBeverage.BeverageID = "123123";
-            //listBeverage.BeverageName = "Blake's Hard Cider Triple Jam";
-            //listBeverage.BeveragePack = "6/12oz";
-            //listBeverage.BeveragePrice = 10.00m;
-            //listBeverage.BeverageActive = "True";
-
-            Beverage[] beverages = new Beverage[4100];
-
-            string pathToCsv = "../../../datafiles/beverage_list.csv";
-
-            CSVProcessor csvProcessor = new CSVProcessor();
-
             UserInterface ui = new UserInterface();
+
+            BeverageCollection beverageCollection = new BeverageCollection();
 
             int choice = ui.GetUserInterface();
 
             int choiceCounter = 1;
 
-            while (choice != 9)
+            bool validInput = true;
+
+            while (choice != 9 && validInput == true)
             {
                 if (choice == 1 && choiceCounter == 1)
                 {
-                    csvProcessor.ImportCsv(pathToCsv, beverages);
+                    beverageCollection.LoadArray();
 
                     choiceCounter++;
                 }
@@ -48,16 +38,17 @@ namespace cis237_assignment1
                 {
                     if (choice == 1)
                     {
+                        Array _returnArray = beverageCollection.LoadArray();
+
                         string outputString = "";
 
-                        foreach (Beverage beverage in beverages)
+                        foreach (Beverage beverage in _returnArray)
                         {
                             if (beverage != null)
                             {
                                 outputString += beverage.ToString() + Environment.NewLine;
                             }
                         }
-
                         ui.PrintList(outputString);
                     }
                 }
