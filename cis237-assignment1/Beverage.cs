@@ -13,7 +13,6 @@ namespace cis237_assignment1
         private string _beveragePack;
         private decimal _beveragePrice;
         private string _beverageActive;
-
         public string BeverageID
         {
             get { return _beverageId; }
@@ -45,7 +44,6 @@ namespace cis237_assignment1
             return _beverageId + " " + _beverageName + " " + _beveragePack +
                    " " + _beveragePrice + " " + _beverageActive;
         }
-
         public Beverage(string BeverageID, string BeverageName, string BeveragePack,
                         decimal BeveragePrice, string BeverageActive)
         {

@@ -8,47 +8,10 @@ namespace cis237_assignment1
 {
     class BeverageCollection
     {
-        //private Array _beveragesArray;
-
-        //public Array BeverageArray
-        //{
-        //    get { return _beveragesArray; }
-        //    set { _beveragesArray = value; }
-        //}
-
-        //    private int SearchBeverageByID(Array[] array, string beverageId)
-        //    {
-        //        bool found = false;
-        //        int max = array.Length - 1;
-        //        int index = 0;
-
-        //        do
-        //        {
-        //            if (array[index] == beverageId)
-        //            {
-        //                found = true;
-        //            }
-        //            else
-        //            {
-        //                index = index + 1;
-        //            }
-        //        }
-        //        while (!(found == true || index > max));
-
-        //        if (found == true)
-        //        {
-        //            return index;
-        //        }
-        //        else
-        //        {
-        //            return -1;
-        //        }
-        //    }
+        Beverage[] _beveragesArray = new Beverage[4100];
 
         public Array LoadArray()
         {
-            Beverage[] _beveragesArray = new Beverage[4100];
-
             string pathToCsv = "../../../datafiles/beverage_list.csv";
 
             CSVProcessor csvProcessor = new CSVProcessor();
@@ -58,9 +21,36 @@ namespace cis237_assignment1
             return _beveragesArray;
         }
 
+        public int Search(string[] list, string elementSought)
+        {
+            bool found = false;
+            int max = list.Length - 1;
+            int currentElement = 0;
+
+            //do
+            //{
+            //    if (_beveragesArray[currentElement] == elementSought)
+            //    {
+            //        found = true;
+            //    }
+            //    else
+            //    {
+            //        currentElement = currentElement + 1;
+            //    }
+            //} while (!(found == true || currentElement > max));
+
+            if (found == true)
+            {
+                return currentElement;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         public BeverageCollection()
         {
-
         }
     }
 }
