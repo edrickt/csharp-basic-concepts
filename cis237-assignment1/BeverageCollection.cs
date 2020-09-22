@@ -21,32 +21,9 @@ namespace cis237_assignment1
             return _beveragesArray;
         }
 
-        public int Search(string[] list, string elementSought)
+        private void SearchArrayByID()
         {
-            bool found = false;
-            int max = list.Length - 1;
-            int currentElement = 0;
 
-            //do
-            //{
-            //    if (_beveragesArray[currentElement] == elementSought)
-            //    {
-            //        found = true;
-            //    }
-            //    else
-            //    {
-            //        currentElement = currentElement + 1;
-            //    }
-            //} while (!(found == true || currentElement > max));
-
-            if (found == true)
-            {
-                return currentElement;
-            }
-            else
-            {
-                return -1;
-            }
         }
 
         public BeverageCollection()

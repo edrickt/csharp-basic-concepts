@@ -9,12 +9,6 @@ namespace cis237_assignment1
 {
     class CSVProcessor
     {
-        string[] _beverageIdArray;
-        string[] _beverageNameArray;
-        string[] _beveragePackArray;
-        decimal[] _beveragePriceArray;
-        string[] _beverageActiveArray;
-
         public bool ImportCsv(string pathToCSVFile, Beverage[] beverages)
         {
             StreamReader streamReader = null;
@@ -46,7 +40,7 @@ namespace cis237_assignment1
             }
         }
         private void ProcessLine(string line, Beverage[] beverages, int index)
-        {
+        {   
             string[] parts = line.Split(',');
             string beverageID = parts[0];
             string beverageName = parts[1];
@@ -54,23 +48,6 @@ namespace cis237_assignment1
             decimal beveragePrice = decimal.Parse(parts[3]);
             string beverageActive = parts[4];
             beverages[index] = new Beverage(beverageID, beverageName, beveragePack, beveragePrice, beverageActive);
-
-            ProcessArrayColumns(parts);
-        }
-        private void ProcessArrayColumns(string[] parts)
-        {
-            string line = "";
-
-            for (int index = 0; index < parts.Length; index++)
-            {
-                parts = line.Split(' ');
-
-                _beverageIdArray[index] = parts[0];
-                _beverageNameArray[index] = parts[1];
-                _beveragePackArray[index] = parts[2];
-                _beveragePriceArray[index] = decimal.Parse(parts[3]);
-                _beverageActiveArray[index] = parts[4];
-            }
         }
     }
 }

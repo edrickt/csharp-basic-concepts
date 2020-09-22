@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,52 +21,54 @@ namespace cis237_assignment1
             UserInterface ui = new UserInterface();
             BeverageCollection beverageCollection = new BeverageCollection();
             int choiceCounter = 0;
-            int choice = ui.GetUserInterface(choiceCounter);
+            string choice = ui.GetUserInterface(choiceCounter);
+            bool loop = true;
 
-            while (choice != 9)
+            while (choice != "9")
             {
-                if (choice == 1 && choiceCounter == 0)
+                while (loop == true)
                 {
-                    Console.Clear();
-                    beverageCollection.LoadArray();
-                    choiceCounter++;
-                    choice = ui.GetUserInterface(choiceCounter);
-                }
-                else if (choice >= 2 && choice != 9)
-                {
-                    Console.Clear();
-                    ui.PrintErrorMessage();
-                    choice = ui.GetUserInterface(choiceCounter);
-                }
-                else
-                {
-                    if (choice == 1)
+                    if (choice == "1" && choiceCounter == 0)
                     {
                         Console.Clear();
-                        Array _returnArray = beverageCollection.LoadArray();
-                        string outputString = "";
-                        foreach (Beverage beverage in _returnArray)
-                        {
-                            if (beverage != null)
-                            {
-                                outputString += beverage.ToString() + Environment.NewLine;
-                            }
-                        }
-                        ui.PrintList(outputString);
+                        beverageCollection.LoadArray();
+                        choiceCounter++;
                         choice = ui.GetUserInterface(choiceCounter);
+                        loop = false;
                     }
-                    else if (choice == 2)
-                    {
-                    }
-                    else if (choice == 3)
-                    {
-                    }
-                    else if (choice >= 4 && choice != 9)
+                    else if (choice != "2" || choice != "9")
                     {
                         Console.Clear();
                         ui.PrintErrorMessage();
                         choice = ui.GetUserInterface(choiceCounter);
                     }
+                }
+                if (choice == "1")
+                {
+                    Console.Clear();
+                    Array _returnArray = beverageCollection.LoadArray();
+                    string outputString = "";
+                    foreach (Beverage beverage in _returnArray)
+                    {
+                        if (beverage != null)
+                        {
+                            outputString += beverage.ToString() + Environment.NewLine;
+                        }
+                    }
+                    ui.PrintList(outputString);
+                    choice = ui.GetUserInterface(choiceCounter);
+                }
+                else if (choice == "2")
+                {
+                }
+                else if (choice == "3")
+                {
+                }
+                else if (choice != "9")
+                {
+                    Console.Clear();
+                    ui.PrintErrorMessage();
+                    choice = ui.GetUserInterface(choiceCounter);
                 }
             }
         }

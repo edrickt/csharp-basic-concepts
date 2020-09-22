@@ -12,11 +12,11 @@ namespace cis237_assignment1
     class UserInterface
     {
         public int counter = 0;
-        public int GetUserInterface(int counter)
+        public string GetUserInterface(int counter)
         {
             this.PrintMenu(counter);
             string input = Console.ReadLine();
-            return Int32.Parse(input);
+            return input;
         }
 
         public string GetUserSearch()
@@ -28,12 +28,13 @@ namespace cis237_assignment1
 
         public void PrintList(string outputList)
         {
-            Console.WriteLine(Environment.NewLine + "ID \t Name  \t Pack \t Price \t Active");
+            Console.WriteLine(Environment.NewLine + "ID".PadRight(6) + "Name".PadRight(56) + "Pack".PadRight(18) + "Price".PadRight(7) + "Active");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
             Console.WriteLine(outputList);
         }
         private void PrintMenu(int counter)
         {
-            Console.WriteLine(Environment.NewLine + "Type number then press ENTER to enter" + Environment.NewLine);
+            Console.WriteLine("Type number then press ENTER to enter" + Environment.NewLine);
             if (counter == 0)
             {
                 Console.WriteLine("OPTIONS:");
@@ -59,7 +60,7 @@ namespace cis237_assignment1
 
         public void PrintErrorMessage()
         {
-            Console.WriteLine("Please enter a number and press ENTER");
+            Console.WriteLine("Please enter a number (1,2,3, NOT one, two three) and press ENTER" + Environment.NewLine);
         }
         public UserInterface()
         {
