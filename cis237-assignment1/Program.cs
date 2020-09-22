@@ -19,17 +19,23 @@ namespace cis237_assignment1
         {
             UserInterface ui = new UserInterface();
             BeverageCollection beverageCollection = new BeverageCollection();
-            int choice = ui.GetUserInterface();
-            int choiceCounter = 1;
+            int choiceCounter = 0;
+            int choice = ui.GetUserInterface(choiceCounter);
 
             while (choice != 9)
             {
-                if (choice == 1 && choiceCounter == 1)
+                if (choice == 1 && choiceCounter == 0)
                 {
                     Console.Clear();
                     beverageCollection.LoadArray();
                     choiceCounter++;
-                    choice = ui.GetUserInterface();
+                    choice = ui.GetUserInterface(choiceCounter);
+                }
+                else if (choice >= 2 && choice != 9)
+                {
+                    Console.Clear();
+                    ui.PrintErrorMessage();
+                    choice = ui.GetUserInterface(choiceCounter);
                 }
                 else
                 {
@@ -46,7 +52,7 @@ namespace cis237_assignment1
                             }
                         }
                         ui.PrintList(outputString);
-                        choice = ui.GetUserInterface();
+                        choice = ui.GetUserInterface(choiceCounter);
                     }
                     else if (choice == 2)
                     {
@@ -58,7 +64,7 @@ namespace cis237_assignment1
                     {
                         Console.Clear();
                         ui.PrintErrorMessage();
-                        choice = ui.GetUserInterface();
+                        choice = ui.GetUserInterface(choiceCounter);
                     }
                 }
             }

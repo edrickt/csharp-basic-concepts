@@ -12,9 +12,9 @@ namespace cis237_assignment1
     class UserInterface
     {
         public int counter = 0;
-        public int GetUserInterface()
+        public int GetUserInterface(int counter)
         {
-            this.PrintMenu();
+            this.PrintMenu(counter);
             string input = Console.ReadLine();
             return Int32.Parse(input);
         }
@@ -31,7 +31,7 @@ namespace cis237_assignment1
             Console.WriteLine(Environment.NewLine + "ID \t Name  \t Pack \t Price \t Active");
             Console.WriteLine(outputList);
         }
-        private void PrintMenu()
+        private void PrintMenu(int counter)
         {
             Console.WriteLine(Environment.NewLine + "Type number then press ENTER to enter" + Environment.NewLine);
             if (counter == 0)
@@ -61,5 +61,15 @@ namespace cis237_assignment1
         {
             Console.WriteLine("Please enter a number and press ENTER");
         }
+        public UserInterface()
+        {
+        }
+
+        public UserInterface(int counter)
+        {
+            counter = 0;
+            PrintMenu(counter);
+        }
+
     }
 }
