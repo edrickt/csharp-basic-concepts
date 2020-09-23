@@ -8,11 +8,13 @@ namespace cis237_assignment1
 {
     class BeverageCollection
     {
-        Beverage[] _beveragesArray = new Beverage[4100];
+        //Beverage[] _beveragesArray = new Beverage[4100];
 
-        public Array LoadArray()
+        public static Beverage[] LoadArray(string pathToCsv)
         {
-            string pathToCsv = "../../../datafiles/beverage_list.csv";
+            Beverage[] _beveragesArray = new Beverage[4100];
+
+            //string pathToCsv = "../../../datafiles/beverage_list.csv";
 
             CSVProcessor csvProcessor = new CSVProcessor();
 
@@ -20,14 +22,33 @@ namespace cis237_assignment1
 
             return _beveragesArray;
         }
-
-        private void SearchArrayByID()
+        public static int SearchBeverageIDArray(Beverage[] beverages, string beverageId)
         {
+            int index = -1;
 
+            for (int i = 0; i < beverages.Length; i++)
+            { 
+                if (beverages[i].BeverageID == beverageId)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
-
-        public BeverageCollection()
+        public static int SearchBeverageNameArray(Beverage[] beverages, string beverageName)
         {
+            int index = -1;
+
+            for (int i = 0; i < beverages.Length; i++)
+            {
+                if (beverages[i].BeverageName == beverageName)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
         }
     }
 }

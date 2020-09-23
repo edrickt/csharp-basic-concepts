@@ -48,7 +48,8 @@ namespace cis237_assignment1
                 Console.WriteLine("OPTIONS:");
                 Console.WriteLine("1. Print list");
                 Console.WriteLine("2. Search beverage by ID");
-                Console.WriteLine("3. Add new beverage");
+                Console.WriteLine("3. Search beverage by Name");
+                Console.WriteLine("4. Add beverage");
                 Console.WriteLine("9. Exit" + Environment.NewLine);
             }
         }
@@ -60,7 +61,7 @@ namespace cis237_assignment1
 
         public void PrintErrorMessage()
         {
-            Console.WriteLine("Please enter a number (1,2,3, NOT one, two three) and press ENTER" + Environment.NewLine);
+            Console.WriteLine("Please enter a number (1,2,3, NOT one, two, three) and press ENTER" + Environment.NewLine);
         }
         public UserInterface()
         {

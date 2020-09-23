@@ -19,10 +19,10 @@ namespace cis237_assignment1
         static void Main(string[] args)
         {
             UserInterface ui = new UserInterface();
-            BeverageCollection beverageCollection = new BeverageCollection();
             int choiceCounter = 0;
             string choice = ui.GetUserInterface(choiceCounter);
             bool loop = true;
+            Beverage[] beverages;
 
             while (choice != "9")
             {
@@ -31,7 +31,7 @@ namespace cis237_assignment1
                     if (choice == "1" && choiceCounter == 0)
                     {
                         Console.Clear();
-                        beverageCollection.LoadArray();
+                        beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
                         choiceCounter++;
                         choice = ui.GetUserInterface(choiceCounter);
                         loop = false;
@@ -46,9 +46,9 @@ namespace cis237_assignment1
                 if (choice == "1")
                 {
                     Console.Clear();
-                    Array _returnArray = beverageCollection.LoadArray();
+                    beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
                     string outputString = "";
-                    foreach (Beverage beverage in _returnArray)
+                    foreach (Beverage beverage in beverages)
                     {
                         if (beverage != null)
                         {
@@ -60,8 +60,13 @@ namespace cis237_assignment1
                 }
                 else if (choice == "2")
                 {
+                    Console.Clear();
+
                 }
                 else if (choice == "3")
+                {
+                }
+                else if (choice == "4")
                 {
                 }
                 else if (choice != "9")
