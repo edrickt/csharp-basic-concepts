@@ -19,19 +19,17 @@ namespace cis237_assignment1
             return input;
         }
 
-        public string GetUserSearch()
+        public void PrintHeader()
         {
-            this.SearchByID();
-            string input = Console.ReadLine();
-            return input;
+            Console.WriteLine("ID".PadRight(6) + "Name".PadRight(56) + "Pack".PadRight(18) + "Price".PadRight(7) + "Active");
+            Console.WriteLine("-----------------------------------------------------------------------------------------------");
         }
 
         public void PrintList(string outputList)
         {
-            Console.WriteLine(Environment.NewLine + "ID".PadRight(6) + "Name".PadRight(56) + "Pack".PadRight(18) + "Price".PadRight(7) + "Active");
-            Console.WriteLine("-----------------------------------------------------------------------------------------------");
             Console.WriteLine(outputList);
         }
+
         private void PrintMenu(int counter)
         {
             Console.WriteLine("Type number then press ENTER to enter" + Environment.NewLine);
@@ -54,14 +52,21 @@ namespace cis237_assignment1
             }
         }
 
-        public void SearchByID()
+        public static string SearchByID()
         {
             Console.WriteLine("Please enter beverage ID");
+            string searchIdString = Console.ReadLine();
+            return searchIdString;
+        }
+
+        public void DisplayString(Beverage[] beverages, int index)
+        {
+            Console.WriteLine(beverages[index].ToString() + Environment.NewLine);
         }
 
         public void PrintErrorMessage()
         {
-            Console.WriteLine("Please enter a number (1,2,3, NOT one, two, three) and press ENTER" + Environment.NewLine);
+            Console.WriteLine("Please enter valid input and press ENTER" + Environment.NewLine);
         }
         public UserInterface()
         {

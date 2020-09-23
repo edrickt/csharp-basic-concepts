@@ -8,13 +8,9 @@ namespace cis237_assignment1
 {
     class BeverageCollection
     {
-        //Beverage[] _beveragesArray = new Beverage[4100];
-
         public static Beverage[] LoadArray(string pathToCsv)
         {
             Beverage[] _beveragesArray = new Beverage[4100];
-
-            //string pathToCsv = "../../../datafiles/beverage_list.csv";
 
             CSVProcessor csvProcessor = new CSVProcessor();
 
@@ -22,6 +18,7 @@ namespace cis237_assignment1
 
             return _beveragesArray;
         }
+        // Outside reference: Linear search program from first C# class
         public static int SearchBeverageIDArray(Beverage[] beverages, string beverageId)
         {
             int index = -1;
