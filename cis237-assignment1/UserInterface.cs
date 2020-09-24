@@ -46,30 +46,36 @@ namespace cis237_assignment1
                 Console.WriteLine("OPTIONS:");
                 Console.WriteLine("1. Print list");
                 Console.WriteLine("2. Search beverage by ID");
-                Console.WriteLine("3. Search beverage by Name");
-                Console.WriteLine("4. Add beverage");
+                Console.WriteLine("3. Add beverage");
                 Console.WriteLine("9. Exit" + Environment.NewLine);
             }
         }
 
         public static string SearchByID()
         {
-            Console.WriteLine("Please enter beverage ID");
+            Console.WriteLine("Please enter beverage ID then press or type EXIT to exit" + Environment.NewLine);
             string searchIdString = Console.ReadLine();
             return searchIdString;
         }
 
         public void DisplayString(Beverage[] beverages, int index)
         {
-            Console.WriteLine(beverages[index].ToString() + Environment.NewLine);
+                Console.WriteLine(beverages[index].ToString() + Environment.NewLine);
         }
 
         public void PrintErrorMessage()
         {
-            Console.WriteLine("Please enter valid input and press ENTER" + Environment.NewLine);
+            Console.WriteLine("Please enter valid input then press ENTER" + Environment.NewLine);
         }
+        public void AddBeveragePrompt()
+        {
+            Console.WriteLine("Enter beverage id, beverage name, beverage pack, beverage price, beverage active" + Environment.NewLine
+                               + "Example: 1ABC5,Gatorade,6/12oz,17.80,True");
+        }
+
         public UserInterface()
         {
+
         }
 
         public UserInterface(int counter)

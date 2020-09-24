@@ -10,11 +10,11 @@ namespace cis237_assignment1
     {
         public static Beverage[] LoadArray(string pathToCsv)
         {
-            Beverage[] _beveragesArray = new Beverage[4100];
+            Beverage[] _beveragesArray = new Beverage[4000];
 
             CSVProcessor csvProcessor = new CSVProcessor();
 
-            csvProcessor.ImportCsv(pathToCsv, _beveragesArray);
+            csvProcessor.ImportCsv(pathToCsv, ref _beveragesArray);
 
             return _beveragesArray;
         }
@@ -24,28 +24,40 @@ namespace cis237_assignment1
             int index = -1;
 
             for (int i = 0; i < beverages.Length; i++)
-            { 
-                if (beverages[i].BeverageID == beverageId)
+            {
+                if (beverages[i] == null)
                 {
-                    index = i;
-                    break;
+                    return index;
+                }
+                else if (beverages[i].BeverageID == beverageId)
+                {
+                    return i;
+                }
+                // Outside referece: https://stackoverflow.com/questions/55750996/how-to-make-string-inputs-case-insensitive-in-c
+                else if (beverageId.ToUpper() == "EXIT")
+                {
+                    index = -2;
+                    return index;
                 }
             }
             return index;
         }
-        public static int SearchBeverageNameArray(Beverage[] beverages, string beverageName)
+        public static void AddBeverage(Beverage[] beverages, string beverageId, string beverageName,
+                                       string beveragePack, decimal beveragePrice, string beverageActive, ref int size)
         {
-            int index = -1;
+            Beverage newBeverage = new Beverage(beverageId, beverageName, beveragePack, beveragePrice, beverageActive);
 
-            for (int i = 0; i < beverages.Length; i++)
+            beverages[++size] = newBeverage;
+        }
+
+        public static int getTrueLength(Beverage[] beverages)
+        {
+            int count = 0;
+            while  (beverages[count]  != null)
             {
-                if (beverages[i].BeverageName == beverageName)
-                {
-                    index = i;
-                    break;
-                }
+                count++;
             }
-            return index;
+            return count;
         }
     }
 }

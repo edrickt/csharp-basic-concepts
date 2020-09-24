@@ -38,7 +38,6 @@ namespace cis237_assignment1
             get { return _beverageActive; }
             set { _beverageActive = value; }
         }
-
         public override string ToString()
         {
             return _beverageId.PadRight(5) + " " + _beverageName.PadRight(55) + " " + _beveragePack.PadRight(17) +

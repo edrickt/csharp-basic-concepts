@@ -9,18 +9,26 @@ namespace cis237_assignment1
 {
     class CSVProcessor
     {
-        public bool ImportCsv(string pathToCSVFile, Beverage[] beverages)
+        public bool ImportCsv(string pathToCSVFile, ref Beverage[] beverages)
         {
             StreamReader streamReader = null;
             try
             {
-                string line;
-
+                string line = "";
+                //int size = 0;
                 streamReader = new StreamReader(pathToCSVFile);
                 int index = 0;
+                /*while ((line = streamReader.ReadLine()) != null)
+                {
+                    size++;
+                    //this.ProcessLine(line, beverages, index++);
+                 
+                }
+                Array.Resize<Beverage>(ref beverages, size+1);*/
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     this.ProcessLine(line, beverages, index++);
+
                 }
                 return true;
             }

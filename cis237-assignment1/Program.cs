@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -22,9 +23,9 @@ namespace cis237_assignment1
             int choiceCounter = 0;
             string choice = ui.GetUserInterface(choiceCounter);
             bool loop = true;
-            Beverage[] beverages;
+            //Beverage[] beverages;
 
-            while (loop = true)
+            while (loop == true)
             {
                 if (choiceCounter == 0)
                 {
@@ -32,11 +33,87 @@ namespace cis237_assignment1
                     switch (choice)
                     {
                         case "1":
+
                             Console.Clear();
-                            beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
+                            Beverage[] beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
                             choiceCounter++;
                             choice = ui.GetUserInterface(choiceCounter);
                             loop = false;
+                            int size = BeverageCollection.getTrueLength(beverages);
+                            while (choiceCounter != 0)
+                            {
+                                switch (choice)
+                                {
+                                    case "1":
+                                        Console.Clear();
+                                        string outputString = "";
+                                        foreach (Beverage beverage in beverages)
+                                        {
+                                            if (beverage != null)
+                                            {
+                                                //trueSize++;
+                                                outputString += beverage.ToString() + Environment.NewLine;
+                                            }
+                                        }
+                                        ui.PrintHeader();
+                                        ui.PrintList(outputString);
+                                        choice = ui.GetUserInterface(choiceCounter);
+                                        break;
+
+                                    case "2":
+                                        bool loopBool = true;
+                                        int indexId =  0;
+                                        Console.Clear();
+                                        while (loopBool == true)
+                                        {
+                                            string searchId = UserInterface.SearchByID();
+                                            
+                                            indexId = BeverageCollection.SearchBeverageIDArray(beverages, searchId);
+
+                                            if (indexId >= 0)
+                                            {
+                                                Console.Clear();
+                                                ui.PrintHeader();
+                                                ui.DisplayString(beverages, indexId);                                           
+                                                loopBool = false;
+                                            }
+                                            else if (indexId == -2)
+                                            {
+                                                Console.Clear();                                           
+                                                loopBool = false;
+                                            }
+                                            else if (indexId == -1)
+                                            {
+                                                Console.Clear();
+                                                ui.PrintErrorMessage();
+                                                loopBool = true;
+                                            }
+                                        }
+                                        choice = ui.GetUserInterface(choiceCounter);
+                                        break;
+
+                                    case "3":
+                                        Console.Clear();
+                                        ui.AddBeveragePrompt();
+                                        string line = Console.ReadLine();
+                                        string[] parts = line.Split(',');
+
+                                        // Outside reference: https://webcourses.ucf.edu/courses/1249560/pages/pass-by-reference-vs-value-pass-by-object
+                                        BeverageCollection.AddBeverage(beverages, parts[0], parts[1], parts[2], Convert.ToDecimal(parts[3]), parts[4], ref size);
+                                        choice = ui.GetUserInterface(choiceCounter);
+                                        break;
+
+                                    case "9":
+                                        Environment.Exit(0);
+                                        break;
+
+                                    default:
+                                        Console.Clear();
+                                        ui.PrintErrorMessage();
+                                        choice = ui.GetUserInterface(choiceCounter);
+                                        break;
+                                }
+                            }
                             break;
 
                         // Outside reference: https://stackoverflow.com/questions/36237718/c-sharp-close-console-application-when-prompted
@@ -51,127 +128,8 @@ namespace cis237_assignment1
                             break;
                     }
                 }
-                else
-                {
-                    switch (choice)
-                    {
-                        case "1":
-                            Console.Clear();
-                            beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
-                            string outputString = "";
-                            foreach (Beverage beverage in beverages)
-                            {
-                                if (beverage != null)
-                                {
-                                    outputString += beverage.ToString() + Environment.NewLine;
-                                }
-                            }
-                            ui.PrintHeader();
-                            ui.PrintList(outputString);
-                            choice = ui.GetUserInterface(choiceCounter);
-                            break;
-
-                        case "2":
-                            Console.Clear();
-                            beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
-                            string searchId = UserInterface.SearchByID();
-                            int indexId = BeverageCollection.SearchBeverageIDArray(beverages, searchId);
-                            if (indexId != -1)
-                            {
-                                Console.Clear();
-                                ui.PrintHeader();
-                                ui.DisplayString(beverages, indexId);
-                            }
-                            else
-                            { 
-                                ui.PrintErrorMessage(); 
-                            }
-                            choice = ui.GetUserInterface(choiceCounter);
-                            break;
-
-                        case "3":
-                            Console.Clear();
-                            beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
-                            string searchName = UserInterface.SearchByID();
-                            int indexName = BeverageCollection.SearchBeverageNameArray(beverages, searchName);
-                            if (indexName != -1)
-                            {
-                                Console.Clear();
-                                ui.PrintHeader();
-                                ui.DisplayString(beverages, indexName);
-                            }
-                            else
-                            {
-                                ui.PrintErrorMessage();
-                            }
-                            choice = ui.GetUserInterface(choiceCounter);
-                            break;
-
-                        case "9":
-                            Environment.Exit(0);
-                            break;
-
-                        default:
-                            Console.Clear();
-                            ui.PrintErrorMessage();
-                            choice = ui.GetUserInterface(choiceCounter);
-                            break;
-                    }
-                }
             }
-
-            //while (choice != "9")
-            //{
-            //    while (loop == true)
-            //    {
-            //        if (choice == "1" && choiceCounter == 0)
-            //        {
-            //            Console.Clear();
-            //            beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
-            //            choiceCounter++;
-            //            choice = ui.GetUserInterface(choiceCounter);
-            //            loop = false;
-            //        }
-            //        else if (choice != "2" || choice != "9")
-            //        {
-            //            Console.Clear();
-            //            ui.PrintErrorMessage();
-            //            choice = ui.GetUserInterface(choiceCounter);
-            //        }
-            //    }
-            //    if (choice == "1")
-            //    {
-            //        Console.Clear();
-            //        beverages = BeverageCollection.LoadArray("../../../datafiles/beverage_list.csv");
-            //        string outputString = "";
-            //        foreach (Beverage beverage in beverages)
-            //        {
-            //            if (beverage != null)
-            //            {
-            //                outputString += beverage.ToString() + Environment.NewLine;
-            //            }
-            //        }
-            //        ui.PrintList(outputString);
-            //        choice = ui.GetUserInterface(choiceCounter);
-            //    }
-            //    else if (choice == "2")
-            //    {
-            //        Console.Clear();
-
-            //    }
-            //    else if (choice == "3")
-            //    {
-            //    }
-            //    else if (choice == "4")
-            //    {
-            //    }
-            //    else if (choice != "9")
-            //    {
-            //        Console.Clear();
-            //        ui.PrintErrorMessage();
-            //        choice = ui.GetUserInterface(choiceCounter);
-            //    }
-            //}
         }
     }
 }
+
