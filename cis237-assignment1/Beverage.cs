@@ -38,11 +38,23 @@ namespace cis237_assignment1
             get { return _beverageActive; }
             set { _beverageActive = value; }
         }
+        /// <summary>
+        /// Overrides the method ToString() of Beverage class
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return _beverageId.PadRight(5) + " " + _beverageName.PadRight(55) + " " + _beveragePack.PadRight(17) +
                    " " + _beveragePrice.ToString().PadRight(6) + " " + _beverageActive;
         }
+        /// <summary>
+        /// Constructor for Beverages class
+        /// </summary>
+        /// <param name="BeverageID">!</param>
+        /// <param name="BeverageName">!</param>
+        /// <param name="BeveragePack">!</param>
+        /// <param name="BeveragePrice">!</param>
+        /// <param name="BeverageActive">!</param>
         public Beverage(string BeverageID, string BeverageName, string BeveragePack,
                         decimal BeveragePrice, string BeverageActive)
         {
