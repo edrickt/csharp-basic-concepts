@@ -4,7 +4,7 @@
 
 ## Author
 
-
+Edrick Tamayo
 
 ## Description
 
@@ -102,8 +102,15 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
-
+-https://stackoverflow.com/questions/55750996/how-to-make-string-inputs-case-insensitive-in-c
+-https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
+-https://webcourses.ucf.edu/courses/1249560/pages/pass-by-reference-vs-value-pass-by-object
+-https://stackoverflow.com/questions/36237718/c-sharp-close-console-application-when-prompted
+-Program from CIS207
 
 ## Known Problems, Issues, And/Or Errors in the Program
+
+-Input user only checks for error within Active, if they either inputed "True" or "False"
+-Can't search for beverage after adding it to array
 
 
