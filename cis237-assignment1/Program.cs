@@ -147,7 +147,7 @@ namespace cis237_assignment1
                                 }
                             }
                             break;
-                        // Outside reference: https://stackoverflow.com/questions/36237718/c-sharp-close-console-application-when-prompted
+                        // Outside reference:  https://stackoverflow.com/questions/36237718/c-sharp-close-console-application-when-prompted
                         // Exit program
                         case "9":
                             Environment.Exit(0);

@@ -103,10 +103,15 @@ Suggestion/Hints:
 ## Outside Resources Used
 
 -https://stackoverflow.com/questions/55750996/how-to-make-string-inputs-case-insensitive-in-c
+	-Make input case insensitive
 -https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/switch
+	-Switch cases
 -https://webcourses.ucf.edu/courses/1249560/pages/pass-by-reference-vs-value-pass-by-object
+	-Passing value by reference
 -https://stackoverflow.com/questions/36237718/c-sharp-close-console-application-when-prompted
+	-Closing the console when receiving input
 -Program from CIS207
+	-Searching an array
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
